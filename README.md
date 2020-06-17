@@ -1,5 +1,5 @@
 # Welcome
-Thank you for taking the time to stop by [42](https://github.com/MartyMcData/42)reprository, this reprository is dedicated to completed projects, if you'd like to see completed work, feel free to check out [Deep_Thought](https://github.com/MartyMcData/Deep_Thought).
+Thank you for taking the time to stop by [42](https://github.com/MartyMcData/42) reprository, this reprository is dedicated to completed projects, if you'd like to see completed work, feel free to check out [Deep_Thought](https://github.com/MartyMcData/Deep_Thought).
 
 
 ## Repository Background
