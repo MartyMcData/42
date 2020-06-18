@@ -5,8 +5,8 @@ By using this VBA macro, you can individually label each file using the excel va
 
 Option Explicit
 
-Const FOLDER_SAVED As String = "<Destination file path>" #Enter the location of where you want the documents to be saved.
-Const SOURCE_FILE_PATH As String = "<Data File Path>"    #Enter the location of where the excel file is located.
+Const FOLDER_SAVED As String = "<Destination file path>"  #Enter the location of where you want the documents to be saved.
+Const SOURCE_FILE_PATH As String = "<Data File Path>"     #Enter the location of where the excel file is located.
 
 Sub <Name of the Macro>()                                 #Enter the name you would live to give the macro
 Dim MainDoc As Document, TargetDoc As Document
