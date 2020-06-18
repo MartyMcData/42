@@ -1,0 +1,48 @@
+# In certain cases, you may need to take excel data and merge it into pdf documents, one problem with mail merge
+is that the functionality will not allow the individual pdfs to be labeled based on the merged excel data values.
+By using this VBA macro, you can individually label each file using the excel variables to create the document.
+
+
+Option Explicit
+
+Const FOLDER_SAVED As String = "<Destination file path>" #Enter the location of where you want the documents to be saved.
+Const SOURCE_FILE_PATH As String = "<Data File Path>"    #Enter the location of where the excel file is located.
+
+Sub <Name of the Macro>()                                 #Enter the name you would live to give the macro
+Dim MainDoc As Document, TargetDoc As Document
+Dim dbPath As String
+Dim recordNumber As Long, totalRecord As Long
+
+Set MainDoc = ActiveDocument
+With MainDoc.MailMerge
+
+                                                                            #Name of the worksheet in Excel
+        .OpenDataSource Name:=SOURCE_FILE_PATH, sqlstatement:="SELECT * FROM [<Name of Worksheet>$]"
+        
+        totalRecord = .DataSource.RecordCount
+
+        For recordNumber = 1 To totalRecord
+        
+            With .DataSource
+                .ActiveRecord = recordNumber
+                .FirstRecord = recordNumber
+                .LastRecord = recordNumber
+            End With
+            
+            .Destination = wdSendToNewDocument
+            .Execute False
+            
+            Set TargetDoc = ActiveDocument
+                                                               #The naming scheme can be concatenated into multiple variables
+            TargetDoc.ExportAsFixedFormat FOLDER_SAVED & .DataSource.DataFields("<Excel Variable1>").Value & ".pdf", exportformat:=wdExportFormatPDF
+            
+            TargetDoc.Close False
+            
+            Set TargetDoc = Nothing
+                    
+        Next recordNumber
+
+End With
+
+Set MainDoc = Nothing
+End Sub
